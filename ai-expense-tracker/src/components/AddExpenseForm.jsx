@@ -30,7 +30,7 @@ export default function AddExpenseForm(){
             <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                 <input name="description" value={form.description} onChange={handleChange} placeholder="what did you spend on?"
                  className="border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100" />
-                <div className="flex gap-3">
+                <div className="grid grid-cols-2 gap-3">
                     <input name="amount" type="number" value={form.amount} onChange={handleChange} placeholder="amount (rs)"
                     className="boder border-gray-200 rounded-lg px-4 py-2 text-sm  focus:outline-none focus:ring-2 focus:ring-blue-100 w-full" />
                     <select name="category" value={form.category} oChange={handleChange} 
