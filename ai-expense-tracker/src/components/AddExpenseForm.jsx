@@ -33,8 +33,8 @@ export default function AddExpenseForm(){
                 <div className="grid grid-cols-2 gap-3">
                     <input name="amount" type="number" value={form.amount} onChange={handleChange} placeholder="amount (rs)"
                     className="boder border-gray-200 rounded-lg px-4 py-2 text-sm  focus:outline-none focus:ring-2 focus:ring-blue-100 w-full" />
-                    <select name="category" value={form.category} oChange={handleChange} 
-                    className="border border-gray-100 rounded-lg text-sm w-1/2 px-4 py-2 focus:outline-none focus:ring-2 focus ring-blue-100" w-full>
+                    <select name="category" value={form.category} onChange={handleChange} 
+                    className=" border border-gray-100 rounded-lg text-sm  px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-100 w-full">
                          {categories.map(cat=>(<option key={cat} value={cat}>{cat}</option>))}
                     </select>
                  
