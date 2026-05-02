@@ -34,9 +34,12 @@ export default function AddExpenseForm(){
                     <input name="amount" type="number" value={form.amount} onChange={handleChange} placeholder="amount (rs)"
                     className="boder border-gray-200 rounded-lg px-4 py-2 text-sm  focus:outline-none focus:ring-2 focus:ring-blue-100 w-full" />
                     <select name="category" value={form.category} oChange={handleChange} 
-                    className="border border-gray-100 rounded-lg text-sm w-1/2 px-4 py-2 focus:outline-none focus:ring-2 focus ring-blue-100" w-full></select>
+                    className="border border-gray-100 rounded-lg text-sm w-1/2 px-4 py-2 focus:outline-none focus:ring-2 focus ring-blue-100" w-full>
+                         {categories.map(cat=>(<option key={cat} value={cat}>{cat}</option>))}
+                    </select>
                  
-                {categories.map(cat=>(<option key={cat} value={cat}>{cat}</option>))}
+               
+               
                 </div>
                 <input name="date" type="date" value={form.date} onChange={handleChange} 
                 className="border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 " />
