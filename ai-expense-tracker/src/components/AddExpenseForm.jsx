@@ -1,7 +1,7 @@
 import { useState} from 'react'
 import {useDispatch} from 'react-redux'
 import { addExpense} from '../features/expenses/expensesSlice'
-const categories = ['food','Transport','Shopping','Health', 'Bills','Other']
+const categories = ['Food','Transport','Shopping','Health', 'Bills','Other']
 export default function AddExpenseForm(){
     const dispatch = useDispatch()
     const [form, setForm] =useState({
@@ -15,7 +15,9 @@ export default function AddExpenseForm(){
     }
     const handleSubmit = (e)=>{
         e.preventDefault()
+        console.log('form data:',form)
         if(!form.description || !form.amount)return
+        console.log('dispatching...')
         dispatch (addExpense(form))
         setForm({
             description:'',
