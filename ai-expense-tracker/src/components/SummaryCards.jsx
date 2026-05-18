@@ -1,5 +1,10 @@
 
 import { useSelector } from 'react-redux'
+ const cards =[
+    {bg: 'bg-blue-50', accent: 'text-blue-600', label:'Total Spent'},
+    {bg: 'bg-purple-50', accent: 'text-purple-600', label:'Top Category'},
+    {bg:'bg-green-50', accent: 'text-green-600',label: 'Total Expenses'},
+ ]
 
 export default function SummaryCards() {
   const expenses = useSelector(state => state.expenses.items)
@@ -15,31 +20,32 @@ export default function SummaryCards() {
   const topCategory = sortedCategories[0]  // ← ["Food", 1200] or undefined
 
   const count = expenses.length
+  const data = [
+    {
+        value: `₹${total.toFixed(2)}`,
+        sub: count === 0 ? 'No expenses Yet' : 'across ${count} items',
+    },
+    {
+        value: topCategory ? topCategory[0]:'-',
+        sub: topCategory ? `₹${topCategory[1].toFixed(2)}`: 'No data',
+    },
+    {
+        value: count,
+        sub: count === 1 ? '1 expense' : '${count} expenses',
+    },
+  ]
 
   return (
-    <div className="grid grid-cols-3 gap-4">
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-        <p className="text-xs text-gray-400 mb-1">Total Spent</p>
-        <p className="text-xl font-semibold text-gray-900">₹{total.toFixed(2)}</p>
-      </div>
+    <div className="grid grid-cols-3 gap-3">
+        {cards.map((card, i)=>(
+            <div key={i} className={`${card.bg} rounded-2xl p-4`}>
+                <p className="text-xs text-gray-400 mb-1">{card.label}</p>
+                <p className={`text-lg font-bold ${card.accent}`}>{data[i].value}</p>
+                <p className="text-xs text-gray-400 mt-1 truncate">{data[i].sub}</p>
+                </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-        <p className="text-xs text-gray-400 mb-1">Top Category</p>
-        <p className="text-xl font-semibold text-gray-900">
-          {topCategory ? topCategory[0] : '—'}
-        </p>
-        <p className="text-xs text-gray-400 mt-1">
-          {topCategory ? `₹${topCategory[1].toFixed(2)}` : 'No data'}
-        </p>
-      </div>
-
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-        <p className="text-xs text-gray-400 mb-1">Total Expenses</p>
-        <p className="text-xl font-semibold text-gray-900">{count}</p>
-        <p className="text-xs text-gray-400 mt-1">
-          {count === 1 ? '1 item' : `${count} items`}
-        </p>
-      </div>
+        ))}
+    
     </div>
   )
 }

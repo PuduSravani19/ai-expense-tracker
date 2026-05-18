@@ -9,9 +9,20 @@ export default function App(){
   console.log('store data:', expenses)        // ← add this
   console.log('first amount:', expenses[0]?.amount, typeof expenses[0]?.amount)
   return(
-    <div className="min-h-screen bg-gray-50 py-10 px-4">
-      <div className="max-w-xl mx-auto flex flex-col gap-6">
-        <h1 className="text-2xl font-semibold text-gray-900">AI EXpense Tracker</h1>
+    <div className="min-h-screen bg-gray-50">
+      
+      <div className="bg-linear-to-r from-blue-600 to-blue-500 px-4 py-8">
+        <div className="max-w-xl mx-auto">
+          <h1 className="text-2xl font-bold text-white">AI Expense Tracker</h1>
+          <p className="text-blue-100 text-sm mt-1">
+            Track spending · Get AI insights · Stay on budget
+          </p>
+        </div>
+      </div>
+
+      {/* content */}
+      <div className="max-w-xl mx-auto px-4 py-6 flex flex-col gap-5">
+        
         <SummaryCards />
         <AITips />
         <SpendingChart />
