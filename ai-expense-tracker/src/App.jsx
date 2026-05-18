@@ -6,8 +6,8 @@ import SpendingChart from './components/SpendingChart'
 import AITips from './components/AITips'
 export default function App(){
   const expenses = useSelector(state => state.expenses.items)
-  console.log('store data:', expenses)        // ← add this
-  console.log('first amount:', expenses[0]?.amount, typeof expenses[0]?.amount)
+ 
+  
   return(
     <div className="min-h-screen bg-gray-50">
       

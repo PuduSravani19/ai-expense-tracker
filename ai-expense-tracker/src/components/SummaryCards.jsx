@@ -31,7 +31,7 @@ export default function SummaryCards() {
     },
     {
         value: count,
-        sub: count === 1 ? '1 expense' : '${count} expenses',
+        sub: count === 1 ? '1 expense' : `${count} expenses`,
     },
   ]
 
