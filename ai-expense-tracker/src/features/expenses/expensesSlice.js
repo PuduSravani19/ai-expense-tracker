@@ -4,7 +4,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 // ── Async Thunk ──────────────────────────────────────────
 export const fetchAITips = createAsyncThunk(
   'expenses/fetchAITips',
-  async (expenses) => {
+  async (expenses, {rejectWithValue}) => {
+    try{
     const total = expenses.reduce((sum, e) => sum + Number(e.amount), 0)
 
     const categoryTotals = expenses.reduce((acc, e) => {
@@ -33,9 +34,18 @@ export const fetchAITips = createAsyncThunk(
         })
       }
     )
+    if(!response.ok){
+        if(response.status === 429){
+            return rejectWithValue('Rate limit reached. Wait 1 minute and try again.')
+        }
+        return rejectWithValue ('API error. Please try again later.')
+    }
 
     const data = await response.json()
     return data.candidates[0].content.parts[0].text
+}catch {
+    return rejectWithValue ('Network error. Check your connection.')
+}
   }
 )
 

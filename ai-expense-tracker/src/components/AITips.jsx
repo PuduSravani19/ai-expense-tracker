@@ -1,13 +1,24 @@
-
+import {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchAITips } from '../features/expenses/expensesSlice'
 
 export default function AITips() {
   const dispatch = useDispatch()
   const { items, aiTips, aiLoading, aiError } = useSelector(state => state.expenses)
+  const [lastCalled, setLastCalled] =useState(0)
+  const [cooldownMsg, setCooldownMsg] = useState('')
 
   const handleGetTips = () => {
     if (items.length === 0) return
+    const now = Date.now()
+    const timeSinceLast = now - lastCalled
+    if(timeSinceLast < 30000){
+        const secs = Math.ceil((30000 - timeSinceLast)/1000)
+        setCooldownMsg(`please wait ${secs} secounds before try again.`)
+        return
+    }
+    setCooldownMsg('')
+    setLastCalled(now)
     dispatch(fetchAITips(items))
   }
 
