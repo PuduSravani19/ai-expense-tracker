@@ -4,7 +4,7 @@
 An AI-powered expense tracking app that helps you monitor spending, visualize categories, and get personalized budget tips using Google Gemini API.
 
 ## 🔗 Live Demo
-[https://ai-expense-tracker-eight-eta.vercel.app](https://ai-expense-tracker-eight-eta.vercel.app)
+[https://ai-expense-tracker-gubf.vercel.app/]
 
 ## ✨ Features
 - ➕ Add and delete expenses by category
