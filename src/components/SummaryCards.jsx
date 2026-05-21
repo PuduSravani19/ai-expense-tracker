@@ -23,7 +23,7 @@ export default function SummaryCards() {
   const data = [
     {
         value: `₹${total.toFixed(2)}`,
-        sub: count === 0 ? 'No expenses Yet' : `across ${count} items`,
+        sub: count === 0 ? 'No expenses Yet' : `across ${count} item`,
     },
     {
         value: topCategory ? topCategory[0]:'-',
